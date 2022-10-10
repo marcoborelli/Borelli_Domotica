@@ -94,5 +94,19 @@ namespace Borelli_TelecomandoTV
             label3.Text = "";
             label4.Text = $"CANALE: {t.getCanale()}";
         }
+        private void button15_Click(object sender, EventArgs e)//can --
+        {
+            if(int.Parse(label4.Text.Substring(7, label4.Text.Length-7)) -1>0)
+                t.setCanale(int.Parse(label4.Text.Substring(7, label4.Text.Length - 7)) - 1 );
+
+            label4.Text = $"CANALE: {t.getCanale()}";
+        }
+        private void button16_Click(object sender, EventArgs e)//can ++
+        {
+            if (int.Parse(label4.Text.Substring(7, label4.Text.Length - 7)) + 1 < 999)
+                t.setCanale(int.Parse(label4.Text.Substring(7, label4.Text.Length - 7)) + 1);
+
+            label4.Text = $"CANALE: {t.getCanale()}";
+        }
     }
 }
