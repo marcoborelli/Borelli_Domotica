@@ -56,7 +56,7 @@ namespace Borelli_TelecomandoTV
             label3.Text = "";
             label4.Text = $"CANALE: {t.getCanale()}";
             label1.Select();
-            if (!t.getStato())
+            if (!t.getStato())//se è spento disabilito
                 button2.Enabled = button3.Enabled = button4.Enabled = button5.Enabled = button6.Enabled = button7.Enabled = button8.Enabled = button9.Enabled = button10.Enabled = button11.Enabled = button12.Enabled = button13.Enabled = button14.Enabled = button15.Enabled = button16.Enabled = false;
             else
                 button2.Enabled = button3.Enabled = button4.Enabled = button5.Enabled = button6.Enabled = button7.Enabled = button8.Enabled = button9.Enabled = button10.Enabled = button11.Enabled = button12.Enabled = button13.Enabled = button14.Enabled = button15.Enabled = button16.Enabled = true;
@@ -64,7 +64,7 @@ namespace Borelli_TelecomandoTV
         }
         private void button1_Click(object sender, EventArgs e)//on/off
         {
-            if (numPremuto % 2 == 0)
+            if (numPremuto % 2 == 0)//se è parfi è perchè è spento quindi va acceso
                 t.Accendi();
             else
                 t.Spegni();
@@ -85,7 +85,7 @@ namespace Borelli_TelecomandoTV
         }
         private void button4_Click(object sender, EventArgs e)//1
         {
-            label3.Text += button4.Text;
+            label3.Text += button4.Text;//così mi salvo tutto in una label che poi terrò come numero
         }
         private void button5_Click(object sender, EventArgs e)//2
         {
@@ -125,7 +125,7 @@ namespace Borelli_TelecomandoTV
         }
         private void button14_Click(object sender, EventArgs e)//ok canale
         {
-            if (int.Parse(label3.Text) < 999 && label3.Text != "")
+            if (label3.Text != ""&& int.Parse(label3.Text) < 999)
                 t.setCanale(int.Parse(label3.Text));
             else
                 MessageBox.Show("Inserire valori validi");
@@ -134,7 +134,7 @@ namespace Borelli_TelecomandoTV
         }
         private void button15_Click(object sender, EventArgs e)//can --
         {
-            if(int.Parse(label4.Text.Substring(7, label4.Text.Length-7)) -1>0)
+            if(int.Parse(label4.Text.Substring(7, label4.Text.Length-7)) -1>0)//c'è la substring perchè io stampo "canale: ...." quindi mi interessa solo l'ultima parte
                 t.setCanale(int.Parse(label4.Text.Substring(7, label4.Text.Length - 7)) - 1 );
 
             Form1_Load(sender, e);
