@@ -20,6 +20,8 @@ namespace Borelli_TelecomandoTV
             produttore = prod;
             modello = mod;
             funzionamento = funz;
+            volume = 0;
+            canale = 1;
         }
 
         public string getProduttore()
@@ -63,6 +65,16 @@ namespace Borelli_TelecomandoTV
         {
             if (volume + nuovoVolume > 0 && volume + nuovoVolume < 100)
                 volume += nuovoVolume;
+        }
+        public void AumentaVolume()
+        {
+            if (volume + 1 < 100)
+                volume++;
+        }
+        public void DiminuisciVolume()
+        {
+            if (volume - 1 >= 0)
+                volume--;
         }
         private void setStato(bool statoNuovo)
         {
