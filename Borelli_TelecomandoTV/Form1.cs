@@ -38,17 +38,29 @@ namespace Borelli_TelecomandoTV
                 button12.PerformClick();
             else if (keyData == (Keys.Enter))//enter
                 button14.PerformClick();
+            else if (keyData == (Keys.Oemplus)|| keyData == (Keys.Add))//aumenta volume
+                button2.PerformClick();
+            else if (keyData == (Keys.OemMinus) || keyData == (Keys.Subtract))//aumenta volume
+                button3.PerformClick();
             return base.ProcessCmdKey(ref msg, keyData);
         }
-
         public Form1()
         {
             InitializeComponent();
             t = new Telecomando("SAMSUNG", "EU...", 1);
+        }
+        private void Form1_Load(object sender, EventArgs e)
+        {
             label1.Text = $"STATO: {t.getStato()}";
             label2.Text = $"VOLUME: {t.getVolume()}";
             label3.Text = "";
             label4.Text = $"CANALE: {t.getCanale()}";
+            label1.Select();
+            if (!t.getStato())
+                button2.Enabled = button3.Enabled = button4.Enabled = button5.Enabled = button6.Enabled = button7.Enabled = button8.Enabled = button9.Enabled = button10.Enabled = button11.Enabled = button12.Enabled = button13.Enabled = button14.Enabled = button15.Enabled = button16.Enabled = false;
+            else
+                button2.Enabled = button3.Enabled = button4.Enabled = button5.Enabled = button6.Enabled = button7.Enabled = button8.Enabled = button9.Enabled = button10.Enabled = button11.Enabled = button12.Enabled = button13.Enabled = button14.Enabled = button15.Enabled = button16.Enabled = true;
+
         }
         private void button1_Click(object sender, EventArgs e)//on/off
         {
@@ -57,19 +69,19 @@ namespace Borelli_TelecomandoTV
             else
                 t.Spegni();
 
-            label1.Text = $"STATO: {t.getStato()}";
-
             numPremuto++;
+
+            Form1_Load(sender, e);
         }
         private void button2_Click(object sender, EventArgs e)//vol++
         {
             t.AumentaVolume();
-            label2.Text=$"VOLUME: {t.getVolume()}";
+            Form1_Load(sender, e);
         }
-        private void button3_Click(object sender, EventArgs e)
+        private void button3_Click(object sender, EventArgs e)//vol--
         {
             t.DiminuisciVolume();
-            label2.Text = $"VOLUME: {t.getVolume()}";
+            Form1_Load(sender, e);
         }
         private void button4_Click(object sender, EventArgs e)//1
         {
@@ -118,22 +130,21 @@ namespace Borelli_TelecomandoTV
             else
                 MessageBox.Show("Inserire valori validi");
 
-            label3.Text = "";
-            label4.Text = $"CANALE: {t.getCanale()}";
+            Form1_Load(sender, e);
         }
         private void button15_Click(object sender, EventArgs e)//can --
         {
             if(int.Parse(label4.Text.Substring(7, label4.Text.Length-7)) -1>0)
                 t.setCanale(int.Parse(label4.Text.Substring(7, label4.Text.Length - 7)) - 1 );
 
-            label4.Text = $"CANALE: {t.getCanale()}";
+            Form1_Load(sender, e);
         }
         private void button16_Click(object sender, EventArgs e)//can ++
         {
             if (int.Parse(label4.Text.Substring(7, label4.Text.Length - 7)) + 1 < 999)
                 t.setCanale(int.Parse(label4.Text.Substring(7, label4.Text.Length - 7)) + 1);
 
-            label4.Text = $"CANALE: {t.getCanale()}";
+            Form1_Load(sender, e);
         }
     }
 }
