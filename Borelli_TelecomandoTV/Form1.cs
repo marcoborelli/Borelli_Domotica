@@ -14,6 +14,33 @@ namespace Borelli_TelecomandoTV
     {
         private Telecomando t;
         int numPremuto = 0;
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            if (keyData == (Keys.NumPad0)) 
+                button13.PerformClick();
+            else if (keyData == (Keys.NumPad1)) 
+                button4.PerformClick();
+            else if (keyData == (Keys.NumPad2))
+                button5.PerformClick();
+            else if (keyData == (Keys.NumPad3))
+                button6.PerformClick();
+            else if (keyData == (Keys.NumPad4))
+                button7.PerformClick();
+            else if (keyData == (Keys.NumPad5))
+                button8.PerformClick();
+            else if (keyData == (Keys.NumPad6))
+                button9.PerformClick();
+            else if (keyData == (Keys.NumPad7))
+                button10.PerformClick();
+            else if (keyData == (Keys.NumPad8))
+                button11.PerformClick();
+            else if (keyData == (Keys.NumPad9))
+                button12.PerformClick();
+            else if (keyData == (Keys.Enter))//enter
+                button14.PerformClick();
+            return base.ProcessCmdKey(ref msg, keyData);
+        }
+
         public Form1()
         {
             InitializeComponent();
