@@ -15,18 +15,16 @@ namespace Borelli_TelecomandoTV
         private int canale;
         private int volume;
 
-        //costruttore
-
-        public TV()
-        {
-            produttore = "";
-            modello = "";
-        }
-        public TV(string ilproduttore, string ilmodello)
+        public TV(string ilproduttore, string ilmodello)//costruttore
         {
             produttore = ilproduttore;
             modello = ilmodello;
         }
+        public TV()
+        {
+
+        }
+
         public bool getStato()
         {
             return stato;
@@ -42,6 +40,14 @@ namespace Borelli_TelecomandoTV
         public int getCanale()
         {
             return canale;
+        }
+        public string getProdutore()
+        {
+            return produttore;
+        }
+        public string getModello()
+        {
+            return modello;
         }
 
         public void accendi()
@@ -67,6 +73,12 @@ namespace Borelli_TelecomandoTV
         public void DiminuisciVolume()
         {
             volume--;
+        }
+        public void SetConnettori(string[] nuoviConn)
+        {
+            connettori = new string[nuoviConn.Length];
+            for (int i = 0; i < connettori.Length; i++)
+                connettori[i] = nuoviConn[i];
         }
         private void setStato(bool nuovoStato)
         {
