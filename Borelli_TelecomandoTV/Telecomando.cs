@@ -11,17 +11,19 @@ namespace Borelli_TelecomandoTV
         private string produttore;
         private string modello;
         private int funzionamento; //1=infrarossi 2=blutut 3=wifi
-        private bool stato;
-        private int canale;
-        private int volume;
+        private TV telev;
 
-        public Telecomando(string prod, string mod, int funz)
+        public Telecomando(string prod, string mod, int funz, TV ilTelev)
         {
             produttore = prod;
             modello = mod;
             funzionamento = funz;
-            volume = 0;
-            canale = 1;
+            telev = ilTelev;
+            if (telev != null)
+            {
+                telev.setVolume(0);
+                telev.setCanale(1);
+            }
         }
 
         public string getProduttore()
@@ -36,49 +38,40 @@ namespace Borelli_TelecomandoTV
         {
             return funzionamento;
         }
-        public int getCanale()
+        public string getTV()
         {
-            return canale;
-        }
-        public int getVolume()
-        {
-            return volume;
-        }
-        public bool getStato()
-        {
-            return stato;
+            return $"{telev}";
         }
 
         public void Accendi()
         {
-            setStato(true);
+            if (telev != null)
+                telev.accendi();
         }
         public void Spegni()
         {
-            setStato(false);
+            if (telev != null)
+                telev.spegni();
         }
         public void setCanale(int nuovoCanale)
         {
-            canale = nuovoCanale;
+            if (telev != null && (nuovoCanale > 0 && nuovoCanale < 1000))
+                telev.setCanale(nuovoCanale);
         }
-        public void CambiaVolume(int nuovoVolume)
+        public void setVolume(int nuovoVolume)
         {
-            if (volume + nuovoVolume > 0 && volume + nuovoVolume < 100)
-                volume += nuovoVolume;
+            if (telev != null && (telev.getVolume() + nuovoVolume > 0 && telev.getVolume() + nuovoVolume < 100))
+                telev.setVolume(nuovoVolume);
         }
         public void AumentaVolume()
         {
-            if (volume + 1 < 100)
-                volume++;
+            if (telev != null && (telev.getVolume() + 1 < 100))
+                telev.AumentaVolume();
         }
         public void DiminuisciVolume()
         {
-            if (volume - 1 >= 0)
-                volume--;
-        }
-        private void setStato(bool statoNuovo)
-        {
-            stato = statoNuovo;
+            if (telev != null && (telev.getVolume() - 1 >= 0))
+                telev.DiminuisciVolume();
         }
     }
 }

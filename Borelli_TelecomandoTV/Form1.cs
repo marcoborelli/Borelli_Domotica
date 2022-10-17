@@ -13,6 +13,7 @@ namespace Borelli_TelecomandoTV
     public partial class Form1 : Form
     {
         private Telecomando t;
+        private TV tel;
         int numPremuto = 0;
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
@@ -47,16 +48,17 @@ namespace Borelli_TelecomandoTV
         public Form1()
         {
             InitializeComponent();
-            t = new Telecomando("SAMSUNG", "EU...", 1);
+            tel = new TV("SAMSUNG", "MOSCONI");
+            t = new Telecomando("SAMSUNG", "EU...", 1, tel);
         }
         private void Form1_Load(object sender, EventArgs e)
         {
-            label1.Text = $"STATO: {t.getStato()}";
-            label2.Text = $"VOLUME: {t.getVolume()}";
+            label1.Text = $"STATO: {tel.getStato()}";
+            label2.Text = $"VOLUME: {tel.getVolume()}";
             label3.Text = "";
-            label4.Text = $"CANALE: {t.getCanale()}";
+            label4.Text = $"CANALE: {tel.getCanale()}";
             label1.Select();
-            if (!t.getStato())//se è spento disabilito
+            if (!tel.getStato())//se è spento disabilito
                 button2.Enabled = button3.Enabled = button4.Enabled = button5.Enabled = button6.Enabled = button7.Enabled = button8.Enabled = button9.Enabled = button10.Enabled = button11.Enabled = button12.Enabled = button13.Enabled = button14.Enabled = button15.Enabled = button16.Enabled = false;
             else
                 button2.Enabled = button3.Enabled = button4.Enabled = button5.Enabled = button6.Enabled = button7.Enabled = button8.Enabled = button9.Enabled = button10.Enabled = button11.Enabled = button12.Enabled = button13.Enabled = button14.Enabled = button15.Enabled = button16.Enabled = true;
