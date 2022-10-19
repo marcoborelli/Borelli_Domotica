@@ -51,14 +51,14 @@ namespace Borelli_TelecomandoTV
             if ((tmpAcq > 10 && tmpAcq < 40) && getStato())
                 tempAcqua = tmpAcq;
             else
-                throw new Exception("Impostare valori accettabili");
+                throw new Exception("Impostare valori accettabili e assicurarsi che la caldaia sia accesa");
         }
         public void setTempRiscaldamento(int tmpRsc)
         {
             if ((tmpRsc > 10 && tmpRsc < 40) && getFunzionamento() == 0 && getStato())
                 tempRiscaldamento = tmpRsc;
             else
-                throw new Exception("Impostare valori accettabili");
+                throw new Exception("Impostare valori accettabili e assicurarsi che la caldaia sia accesa");
         }
         public void accendi()
         {
@@ -72,6 +72,8 @@ namespace Borelli_TelecomandoTV
         {
             if ((funz == 0 || funz == 1) && getStato())
                 funzionamento = funz;
+            else
+                throw new Exception("Impostare valori accettabili e assicurarsi che la caldaia sia accesa");
         }
 
         private void inizializzaVariabili()
