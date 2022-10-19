@@ -61,7 +61,7 @@ namespace Borelli_TelecomandoTV
         }
         public void setCanale(int nuovoCanale)
         {
-            if (telev != null && (nuovoCanale > 0 && nuovoCanale < 1000)&&telev.getStato())
+            if (telev != null && (nuovoCanale > 0 && nuovoCanale < 1000)&&telev.getStato())//se la tv è accesa
                 telev.setCanale(nuovoCanale);
         }
         public void setVolume(int nuovoVolume)

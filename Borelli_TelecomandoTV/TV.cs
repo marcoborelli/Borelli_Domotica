@@ -76,6 +76,7 @@ namespace Borelli_TelecomandoTV
             for (int i = 0; i < connettori.Length; i++)
                 connettori[i] = nuoviConn[i];
         }
+
         private void setStato(bool nuovoStato)
         {
             stato = nuovoStato;

@@ -17,9 +17,9 @@ namespace Borelli_TelecomandoTV
         int numPremuto = 0;
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {
-            if (keyData == (Keys.NumPad0)) 
+            if (keyData == (Keys.NumPad0))
                 button13.PerformClick();
-            else if (keyData == (Keys.NumPad1)) 
+            else if (keyData == (Keys.NumPad1))
                 button4.PerformClick();
             else if (keyData == (Keys.NumPad2))
                 button5.PerformClick();
@@ -39,7 +39,7 @@ namespace Borelli_TelecomandoTV
                 button12.PerformClick();
             else if (keyData == (Keys.Enter))//enter
                 button14.PerformClick();
-            else if (keyData == (Keys.Oemplus)|| keyData == (Keys.Add))//aumenta volume
+            else if (keyData == (Keys.Oemplus) || keyData == (Keys.Add))//aumenta volume
                 button2.PerformClick();
             else if (keyData == (Keys.OemMinus) || keyData == (Keys.Subtract))//aumenta volume
                 button3.PerformClick();
@@ -66,7 +66,7 @@ namespace Borelli_TelecomandoTV
         }
         private void button1_Click(object sender, EventArgs e)//on/off
         {
-            if (numPremuto % 2 == 0)//se è parfi è perchè è spento quindi va acceso
+            if (numPremuto % 2 == 0)//se è pari è perchè è spento quindi va acceso
                 t.Accendi();
             else
                 t.Spegni();
@@ -127,7 +127,7 @@ namespace Borelli_TelecomandoTV
         }
         private void button14_Click(object sender, EventArgs e)//ok canale
         {
-            if (label3.Text != ""&& int.Parse(label3.Text) < 999)
+            if (label3.Text != "" && int.Parse(label3.Text) < 999)
                 t.setCanale(int.Parse(label3.Text));
             else
                 MessageBox.Show("Inserire valori validi");
@@ -136,8 +136,8 @@ namespace Borelli_TelecomandoTV
         }
         private void button15_Click(object sender, EventArgs e)//can --
         {
-            if(int.Parse(label4.Text.Substring(7, label4.Text.Length-7)) -1>0)//c'è la substring perchè io stampo "canale: ...." quindi mi interessa solo l'ultima parte
-                t.setCanale(int.Parse(label4.Text.Substring(7, label4.Text.Length - 7)) - 1 );
+            if (int.Parse(label4.Text.Substring(7, label4.Text.Length - 7)) - 1 > 0)//c'è la substring perchè io stampo "canale: ...." quindi mi interessa solo l'ultima parte
+                t.setCanale(int.Parse(label4.Text.Substring(7, label4.Text.Length - 7)) - 1);
 
             Form1_Load(sender, e);
         }
