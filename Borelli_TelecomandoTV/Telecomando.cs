@@ -61,23 +61,31 @@ namespace Borelli_TelecomandoTV
         }
         public void setCanale(int nuovoCanale)
         {
-            if (telev != null && (nuovoCanale > 0 && nuovoCanale < 1000)&&telev.getStato())//se la tv è accesa
+            if (telev != null && (nuovoCanale > 0 && nuovoCanale < 1000) && telev.getStato())//se la tv è accesa
                 telev.setCanale(nuovoCanale);
+            else
+                throw new Exception("Impostare valori accettabili");
         }
         public void setVolume(int nuovoVolume)
         {
             if (telev != null && (telev.getVolume() + nuovoVolume > 0 && telev.getVolume() + nuovoVolume < 100) && telev.getStato())
                 telev.setVolume(nuovoVolume);
+            else
+                throw new Exception("Impostare valori accettabili");
         }
         public void AumentaVolume()
         {
             if (telev != null && (telev.getVolume() + 1 < 100) && telev.getStato())
                 telev.AumentaVolume();
+            else
+                throw new Exception("Impostare valori accettabili");
         }
         public void DiminuisciVolume()
         {
             if (telev != null && (telev.getVolume() - 1 >= 0) && telev.getStato())
                 telev.DiminuisciVolume();
+            else
+                throw new Exception("Impostare valori accettabili");
         }
         public void setTV(TV laTV)
         {
