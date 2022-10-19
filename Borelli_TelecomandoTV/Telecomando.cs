@@ -15,15 +15,21 @@ namespace Borelli_TelecomandoTV
 
         public Telecomando(string prod, string mod, int funz, TV ilTelev)
         {
-            produttore = prod;
-            modello = mod;
-            funzionamento = funz;
-            telev = ilTelev;
+            setProduttore(prod);
+            setModello(mod);
+            setFunzionamento(funz);
+            setTV(ilTelev);
             if (telev != null)
             {
                 telev.setVolume(0);
                 telev.setCanale(1);
             }
+        }
+        public Telecomando(string prod, string mod, int funz)
+        {
+            setProduttore(prod);
+            setModello(mod);
+            setFunzionamento(funz);
         }
 
         public string getProduttore()
@@ -55,23 +61,40 @@ namespace Borelli_TelecomandoTV
         }
         public void setCanale(int nuovoCanale)
         {
-            if (telev != null && (nuovoCanale > 0 && nuovoCanale < 1000))
+            if (telev != null && (nuovoCanale > 0 && nuovoCanale < 1000)&&telev.getStato())
                 telev.setCanale(nuovoCanale);
         }
         public void setVolume(int nuovoVolume)
         {
-            if (telev != null && (telev.getVolume() + nuovoVolume > 0 && telev.getVolume() + nuovoVolume < 100))
+            if (telev != null && (telev.getVolume() + nuovoVolume > 0 && telev.getVolume() + nuovoVolume < 100) && telev.getStato())
                 telev.setVolume(nuovoVolume);
         }
         public void AumentaVolume()
         {
-            if (telev != null && (telev.getVolume() + 1 < 100))
+            if (telev != null && (telev.getVolume() + 1 < 100) && telev.getStato())
                 telev.AumentaVolume();
         }
         public void DiminuisciVolume()
         {
-            if (telev != null && (telev.getVolume() - 1 >= 0))
+            if (telev != null && (telev.getVolume() - 1 >= 0) && telev.getStato())
                 telev.DiminuisciVolume();
+        }
+        public void setTV(TV laTV)
+        {
+            telev = laTV;
+        }
+
+        private void setProduttore(string IlProd)
+        {
+            produttore = IlProd;
+        }
+        private void setModello(string IlMod)
+        {
+            modello = IlMod;
+        }
+        private void setFunzionamento(int IlFunz)
+        {
+            funzionamento = IlFunz;
         }
     }
 }

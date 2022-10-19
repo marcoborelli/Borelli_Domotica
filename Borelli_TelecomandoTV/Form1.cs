@@ -12,8 +12,8 @@ namespace Borelli_TelecomandoTV
 {
     public partial class Form1 : Form
     {
-        private Telecomando t;
-        private TV tel;
+        Telecomando t;
+        TV tel;
         int numPremuto = 0;
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
         {

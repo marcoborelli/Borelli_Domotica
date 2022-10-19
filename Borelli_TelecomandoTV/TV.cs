@@ -17,12 +17,8 @@ namespace Borelli_TelecomandoTV
 
         public TV(string ilproduttore, string ilmodello)//costruttore
         {
-            produttore = ilproduttore;
-            modello = ilmodello;
-        }
-        public TV()
-        {
-
+            SetProduttore(ilproduttore);
+            SetModello(ilmodello);
         }
 
         public bool getStato()
@@ -83,6 +79,14 @@ namespace Borelli_TelecomandoTV
         private void setStato(bool nuovoStato)
         {
             stato = nuovoStato;
+        }
+        private void SetProduttore(string ilProd)
+        {
+            produttore = ilProd;
+        }
+        private void SetModello(string IlMode)
+        {
+            modello = IlMode;
         }
     }
 }
