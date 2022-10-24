@@ -44,9 +44,9 @@ namespace Borelli_TelecomandoTV
         {
             return funzionamento;
         }
-        public string getTV()
+        public TV getTV()
         {
-            return $"{telev}";
+            return telev;
         }
 
         public void Accendi()
